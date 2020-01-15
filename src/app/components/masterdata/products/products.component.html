@@ -1,9 +1,30 @@
 <div>
-  
-  <nz-divider nzText="Tạo sản phẩm" nzOrientation="left">test</nz-divider>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
-        sunt a te dicta? Refert tamen, quo modo.
-      </p>
-      <nz-divider></nz-divider>
+  <div>
+    <nz-divider [nzText]="Title" nzOrientation="left">
+      <ng-template #Title>
+        <i nz-icon nzType="plus-square" nzTheme="twotone"></i>&nbsp;Thêm Sản Phẩm
+      </ng-template>
+    </nz-divider>
+  </div>
+
+  <div nz-row>
+    <div nz-col nzSpan="4">
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+        <button nz-button><i nz-icon nzType="upload"></i><span>Chọn File</span></button>
+      </nz-upload>
+    </div>
+    <div nz-col nzSpan="2">
+      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleUpload()"
+        [disabled]="fileList.length == 0">
+        {{ uploading ? 'Uploading' : 'Start Upload' }}
+      </button>
+    </div>
+
+    <div nz-col nzSpan="2">
+      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleUpload()">
+        Thêm Sản Phẩm
+      </button>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
 </div>

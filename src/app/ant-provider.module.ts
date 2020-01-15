@@ -14,6 +14,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import {
   MenuFoldOutline,
@@ -31,11 +32,11 @@ const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline
 
   imports: [NzLayoutModule, NzMenuModule, NzProgressModule, NzDividerModule, NzIconModule,
     NzTableModule, NzDropDownModule, NzInputModule, NzButtonModule, NzModalModule, NzGridModule,
-    NzSelectModule, NzFormModule, NzDatePickerModule],
+    NzSelectModule, NzFormModule, NzDatePickerModule,NzUploadModule],
 
   exports: [NzLayoutModule, NzMenuModule, NzProgressModule, NzDividerModule, NzIconModule,
     NzTableModule, NzDropDownModule, NzInputModule, NzButtonModule, NzModalModule, NzGridModule,
-    NzSelectModule, NzFormModule, NzDatePickerModule]
+    NzSelectModule, NzFormModule, NzDatePickerModule,NzUploadModule]
 })
 export class AntProviderModule {
 }
