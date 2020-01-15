@@ -16,6 +16,9 @@ import { MaterialModule } from './material.module';
 import { StudentService } from './services/student.service';
 import { TransferHttp } from './modules/transfer-http/transfer-http';
 import { FooterComponent } from './components/core/footer/footer.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 registerLocaleData(en);
 
@@ -24,6 +27,9 @@ registerLocaleData(en);
     AppComponent,FooterComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+ 	  AngularFirestoreModule,
+    
     BrowserModule,
     AppRoutingModule,
     AntProviderModule,

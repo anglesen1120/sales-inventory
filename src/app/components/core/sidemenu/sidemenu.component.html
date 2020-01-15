@@ -10,13 +10,13 @@
     <li nz-submenu nzOpen nzTitle="Theo Dõi Hệ Thống" nzIcon="dashboard">
       <ul>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/student">Welcome</a>
+          <a routerLink="/dashboard-report">Welcome</a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a>BC Doanh Số BH(Date)</a>
+          <a routerLink="/sales-report-date">BC Doanh Số BH(Date)</a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a>BC Tình Hinh Kinh Doanh</a>
+          <a routerLink="/sales-analyis-report">BC Tình Hinh Kinh Doanh</a>
         </li>
       </ul>
     </li>
@@ -24,10 +24,10 @@
       <ul>
        
         <li nz-menu-item nzMatchRouter>
-          <a>Tạo Đơn Nhập Hàng</a>
+          <a routerLink="/create-purcharsing">Tạo Đơn Nhập Hàng</a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a>Tạo Đơn Trả Nhập Hàng</a>
+          <a routerLink="/cancel-purcharsing">Tạo Đơn Trả Nhập Hàng</a>
         </li>
 
       </ul>
@@ -35,11 +35,11 @@
     <li nz-submenu nzOpen nzTitle="Bán Hàng" nzIcon="user" nzTheme="outline">
       <ul>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/student">Tạo Đơn Bán Hàng</a>
+          <a routerLink="/create-sales">Tạo Đơn Bán Hàng</a>
          
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a>Tạo Đơn Trả Hàng</a>
+          <a routerLink="/cancel-sales">Tạo Đơn Trả Hàng</a>
         </li>
 
 
@@ -49,16 +49,16 @@
 <li nz-submenu nzOpen nzTitle="Dữ Liệu Hệ Thống" nzIcon="account-book" nzTheme="outline">
   <ul>
     <li nz-menu-item nzMatchRouter>
-      <a>Tạo Mã Hàng</a>
+      <a routerLink="/products">Tạo Mã Hàng</a>
     </li>
     <li nz-menu-item nzMatchRouter>
-      <a>Tạo Khách Hàng</a>
+      <a routerLink="/custommers">Tạo Khách Hàng</a>
     </li>
     <li nz-menu-item nzMatchRouter>
-      <a>Tích Điểm Khách Hàng</a>
+      <a routerLink="/loyatites-custommers">Tích Điểm Khách Hàng</a>
     </li>
     <li nz-menu-item nzMatchRouter>
-      <a>Chương Trình Khuyến Mãi</a>
+      <a routerLink="/promotions">Chương Trình Khuyến Mãi</a>
     </li>
 
     

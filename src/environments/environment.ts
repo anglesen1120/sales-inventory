@@ -5,12 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID"
+    apiKey: "AIzaSyAagLWrtRj_f1B5namSvECL2MSgbW0NskY",
+    authDomain: "hanhsalesinventory.firebaseapp.com",
+    databaseURL: "https://hanhsalesinventory.firebaseio.com",
+    projectId: "hanhsalesinventory",
+    storageBucket: "hanhsalesinventory.appspot.com",
+    messagingSenderId: "881293071938",
+    appId: "1:881293071938:web:a68bd995dc485ef335bfdb",
+    measurementId: "G-NRXSXNDS6M"
 
   }
 };
