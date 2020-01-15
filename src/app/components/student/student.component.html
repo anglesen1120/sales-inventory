@@ -1,0 +1,69 @@
+<nz-table #nzTable [nzData]="listStudent" [nzBordered]="true">
+  <thead>
+    <tr>
+      <th nzShowExpand></th>
+      <th nzCustomFilter>STT</th>
+      <th nzCustomFilter>Tên Thánh</th>
+      <th nzCustomFilter>
+        Họ và Tên
+        <i nz-th-extra class="ant-table-filter-icon" nz-icon nz-dropdown #dropdown="nzDropdown" nzType="search"
+          [nzDropdownMenu]="menu" [class.ant-table-filter-open]="dropdown.nzVisible" nzTrigger="click"
+          nzPlacement="bottomRight" [nzClickHide]="false" nzTableFilter></i>
+      </th>
+      <th>Họ Và Tên Cha</th>
+      <th>Họ Và Tên Mẹ</th>
+      <th nzShowFilter [nzFilters]="listOfFilterAddress" (nzFilterChange)="filterAddressChange($event)">Lớp Giáo Lý</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template ngFor let-student [ngForOf]="nzTable.data">
+      <tr>
+        <!-- <tr *ngFor="let student of nzTable.data; index as i"> -->
+        <td nzShowExpand [(nzExpand)]="mapOfExpandData[student.ID]"></td>
+        <td>{{ student.ID }}</td>
+        <td>{{ student.FirstName }}</td>
+        <td>{{ student.StudentName }}</td>
+        <td>{{ student.FartherName }}</td>
+        <td>{{ student.MotherName }}</td>
+        <td>{{ student.ClassName }}</td>
+        <td>
+          <button nz-button nzType="primary" nzShape="round" (click)="detailOutlets(student)"><i nz-icon nzType="user"
+              nzTheme="outline"></i></button>
+          &nbsp;
+          <button nz-button nzType="danger" nzShape="round"><i nz-icon nzType="delete" nzTheme="outline"></i></button>
+        </td>
+      </tr>
+      <tr [nzExpand]="mapOfExpandData[student.ID]" style="background-color:peachpuff;">
+        <td></td>
+        <td><b>Địa chỉ:</b></td>
+        <td>{{ student.Address }}</td>
+        <td><b>Giáo Khu:</b></td>
+        <td>{{ student.DioceseName }}</td>
+        <td><b>Ngành Thiếu Nhi:</b></td>
+        <td>{{ student.ClassGroupName }}</td>
+        <td><b>Tuổi:&nbsp;</b>{{ student.YearOld }}</td>
+      </tr>
+
+      <tr [nzExpand]="mapOfExpandData[student.ID]" style="background-color: peachpuff;">
+        <td></td>
+        <td><b>Giới Tính:</b></td>
+        <td>{{ student.SexValue }}</td>
+        <td><b>Giáo Xứ:</b></td>
+        <td>{{ student.ParishName }}</td>
+        <td><b>Ngày Sinh:</b></td>
+        <td>{{student.Birthday}}</td>
+        <td><b>Số Điện Thoại: </b>0{{student.Phone}}</td>
+      </tr>
+    </ng-template>
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="search-box">
+    <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+    <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">
+      Search
+    </button>
+    <button nz-button nzSize="small" (click)="reset()">Reset</button>
+  </div>
+</nz-dropdown-menu>

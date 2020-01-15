@@ -1,0 +1,84 @@
+<nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+  [nzTrigger]="null">
+  <div class="sidebar-logo">
+    <a href="https://ng.ant.design/" target="_blank">
+      <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+      <h1>Quản Lý Bán Hàng</h1>
+    </a>
+  </div>
+  <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <li nz-submenu nzOpen nzTitle="Theo Dõi Hệ Thống" nzIcon="dashboard">
+      <ul>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/student">Welcome</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a>BC Doanh Số BH(Date)</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a>BC Tình Hinh Kinh Doanh</a>
+        </li>
+      </ul>
+    </li>
+    <li nz-submenu nzOpen nzTitle="Nhập Hàng" nzIcon="home" nzTheme="outline">
+      <ul>
+       
+        <li nz-menu-item nzMatchRouter>
+          <a>Tạo Đơn Nhập Hàng</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a>Tạo Đơn Trả Nhập Hàng</a>
+        </li>
+
+      </ul>
+    </li>
+    <li nz-submenu nzOpen nzTitle="Bán Hàng" nzIcon="user" nzTheme="outline">
+      <ul>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/student">Tạo Đơn Bán Hàng</a>
+         
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a>Tạo Đơn Trả Hàng</a>
+        </li>
+
+
+
+      </ul>
+    </li>
+<li nz-submenu nzOpen nzTitle="Dữ Liệu Hệ Thống" nzIcon="account-book" nzTheme="outline">
+  <ul>
+    <li nz-menu-item nzMatchRouter>
+      <a>Tạo Mã Hàng</a>
+    </li>
+    <li nz-menu-item nzMatchRouter>
+      <a>Tạo Khách Hàng</a>
+    </li>
+    <li nz-menu-item nzMatchRouter>
+      <a>Tích Điểm Khách Hàng</a>
+    </li>
+    <li nz-menu-item nzMatchRouter>
+      <a>Chương Trình Khuyến Mãi</a>
+    </li>
+
+    
+  </ul>
+</li>
+
+  </ul>
+</nz-sider>
+
+<nz-layout>
+  <nz-header>
+    <div class="app-header">
+      <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+        <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+      </span>
+    </div>
+  </nz-header>
+  <nz-content>
+    <div class="inner-content">
+      <router-outlet></router-outlet>
+    </div>
+  </nz-content>
+</nz-layout>

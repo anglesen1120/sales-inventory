@@ -1,0 +1,160 @@
+<div>
+<form nz-form [formGroup]="formEditStudent">
+    <div nz-row [nzGutter]="8">
+        <div nz-col class="gutter-row" [nzSpan]="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Tên Thánh</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <input nz-input formControlName="FirstName"  />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Họ & Tên TN</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <input nz-input formControlName="UserName"  />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Họ & Tên Cha</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <input nz-input formControlName="FartherName"  />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Họ & Tên Mẹ</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <input nz-input formControlName="MotherName"  />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Ngày Sinh</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <!-- <input nz-input formControlName="BirthDay"  /> -->
+                    <nz-date-picker [nzFormat]="dateFormat" formControlName="BirthDay" ></nz-date-picker>
+                    <br />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+
+
+
+
+        <div nz-col class="gutter-row" [nzSpan]="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Lớp Giáo Lý</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <input nz-input formControlName="Class"  />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>Ngành TN</nz-form-label>
+                <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                    <input nz-input formControlName="ClassGroup"  />
+                    <ng-template #userErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">
+                            Please input your username!
+                        </ng-container>
+                        <ng-container *ngIf="control.hasError('duplicated')">
+                            The username is redundant!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>Giáo Xứ</nz-form-label>
+            <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                <input nz-input formControlName="GiaoXu"  />
+                <ng-template #userErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Please input your username!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('duplicated')">
+                        The username is redundant!
+                    </ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>Địa Chỉ</nz-form-label>
+            <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                <!-- <input nz-input formControlName="Address"  /> -->
+                <textarea nz-input placeholder="" ngModel nzAutosize formControlName="Address"></textarea>
+                <ng-template #userErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Please input your username!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('duplicated')">
+                        The username is redundant!
+                    </ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSpan]="7" nzRequired>Số Điện Thoại</nz-form-label>
+            <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+                <input nz-input formControlName="Phone"  />
+                <ng-template #userErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Please input your username!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('duplicated')">
+                        The username is redundant!
+                    </ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        </div>
+        
+    </div>
+
+</form>
+</div>

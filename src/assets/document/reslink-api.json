@@ -1,0 +1,45 @@
+{
+  "MasterData": {
+    "GetCompany": "MasterData/GetCompany",
+    "GetSalesmanType": "MasterData/GetSalesmanType",
+    "GetCountry": "MasterData/GetCountry",
+    "GetEducation": "MasterData/GetEducation",
+    "GetLanguges": "MasterData/GetLanguges",
+    "GetCurrent": "MasterData/GetCurrent",
+    "GetRelationship": "MasterData/GetRelationship",
+    "GetRuoterDelivery": "MasterData/GetRuoterDelivery",
+    "GetProductGroup": "MasterData/GetProductGroup",
+    "GetLocationOutlets": "MasterData/GetLocationOutlets",
+    "GetDistrict": "MasterData/GetDistrict",
+    "DistrictByKey": "MasterData/DistrictByKey?pKey={0}",
+    "GetProvince": "MasterData/GetProvince",
+    "GetOutletType": "MasterData/GetOutletType",
+    "GetOutletSubType": "MasterData/GetOutletSubType",
+    "GetInvoiceType": "MasterData/GetInvoiceType",
+    "GetListSex": "MasterData/GetListSex",
+    "GetWard": "MasterData/GetWard",
+    "WardByKey": "MasterData/WardByKey?pKey={0}"
+  },
+  "Student": {
+    "GetAllStudent": "Student/GetAllStudent",
+    "GetStudentFullImformation": "Student/GetStudentFullImformation",
+    "UpdatetSalesman": "Salesman/UpdatetSalesman",
+    "UpdateStatusSalesman": "Salesman/UpdateStatusSalesman"
+  },
+  "Outlets": {
+    "GetListOutletsActiveWhereCompanyCode": "Outlets/GetListOutletsActiveWhereCompanyCode",
+    "InsertOutlets":"Outlets/InsertOutlets"
+  },
+
+  "Account": {
+    "Login": "Account/Login",
+    "Logout": "Account/Logout",
+    "CheckLogin":"Account/CheckLogin",
+    "GetList": "Account/GetList",
+    "Insert": "Account/Insert",
+    "Update": "Account/Update"
+
+  }
+
+
+}

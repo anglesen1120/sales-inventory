@@ -1,0 +1,30 @@
+{
+  "ClientConfig": {
+    "DateFormat": "dd/MM/yyyy",
+    "DateTimeFormat": "dd/MM/yyyy HH:mm:ss",
+    "TimeFormat": "HH:mm:ss",
+    "NumberFormat": "1.0",
+    "DecimalFormat": "1.2",
+    "PageSizeOptions": "20;25;50;100",
+    "PageLable": "Hiển thị mỗi trang",
+    "StatusList": {
+      "1": "Đang hoạt động",
+      "2": "Tạm ngừng hoạt động",
+      "0": "Ngừng hoạt động"
+    },
+    "Funtion": [
+      {
+        "ID": 1,
+        "Name": "Ông"
+      },
+      {
+        "ID": 2,
+        "Name": "Bà"
+      },
+      {
+        "ID": 3,
+        "Name": "Cô"
+      }
+    ]
+  }
+}

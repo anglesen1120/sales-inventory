@@ -1,0 +1,1 @@
+﻿export enum EAlertType { Success, Error, Warning }

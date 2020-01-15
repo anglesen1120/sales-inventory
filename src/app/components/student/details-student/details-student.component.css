@@ -1,0 +1,15 @@
+.grid-config {
+        background: #00a0e9; 
+        height: 120px;
+        line-height: 120px;
+        font-size: 13px;
+        text-align: center !important;
+      }
+
+
+/* .ant-modal-conten center {
+          margin: 0 auto !important;
+            width: 800px !important;
+
+          height: 500px;
+		} */

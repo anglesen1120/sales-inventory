@@ -1,32 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IconsProviderModule } from './icons-provider.module';
+import { AntProviderModule } from './ant-provider.module';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { SidemenuModule } from './components/core/sidemenu/sidemenu.module';
+import { AuthenticationService } from './services/authentication.service';
+import { AlertService } from './library/alert/alert.service';
+import { MaterialModule } from './material.module';
+import { StudentService } from './services/student.service';
+import { TransferHttp } from './modules/transfer-http/transfer-http';
+import { FooterComponent } from './components/core/footer/footer.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IconsProviderModule,
+    AntProviderModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, SidemenuModule, MaterialModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, AuthenticationService, AlertService, StudentService, TransferHttp],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
