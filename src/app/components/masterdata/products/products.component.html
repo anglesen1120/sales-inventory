@@ -9,8 +9,8 @@
 
   <div nz-row>
     <div nz-col nzSpan="6">
-      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforUpload" (nzChange)="handleChange($event)" >
-        <button nz-button><i nz-icon nzType="upload"></i><span>Chọn File</span></button>
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforUpload" >
+        <button nz-button ><i nz-icon nzType="upload"></i><span>Chọn File</span></button>
       </nz-upload>
     </div>
     <div nz-col nzSpan="3">
