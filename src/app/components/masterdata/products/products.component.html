@@ -9,13 +9,13 @@
 
   <div nz-row>
     <div nz-col nzSpan="6">
-      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforUpload">
+      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforUpload" (nzChange)="handleChange($event)" >
         <button nz-button><i nz-icon nzType="upload"></i><span>Chọn File</span></button>
       </nz-upload>
     </div>
     <div nz-col nzSpan="3">
       <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleUpload()"
-        [disabled]="fileList.length == 0">
+        [disabled]="fileList.length ==0 || fileList.length > 1">
         {{ uploading ? 'Uploading' : 'Start Upload' }}
       </button>
     </div>
