@@ -9,13 +9,15 @@
 
   <div nz-row>
     <div nz-col nzSpan="6">
-      <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforUpload" >
+      <!-- <nz-upload [(nzFileList)]="fileUploaded" [nzBeforeUpload]="beforUpload" (change)="handleChange($event)">
         <button nz-button ><i nz-icon nzType="upload"></i><span>Chọn File</span></button>
-      </nz-upload>
+      </nz-upload> -->
+      
+      <input type="file" value="Chọn File" (change)="beforUpload($event)">
     </div>
     <div nz-col nzSpan="3">
-      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleUpload()"
-        [disabled]="fileList.length ==0 || fileList.length > 1">
+      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="readExcell()"
+        [disabled]="fileList.length ==0">
         {{ uploading ? 'Uploading' : 'Start Upload' }}
       </button>
     </div>
@@ -48,12 +50,12 @@
     <tbody>
       <tr *ngFor="let data of headerTable.data">
         <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-        <td>{{ data.name }}</td>
+        <td>{{ data.ProduuctID }}</td>
+        <td>{{ data.Productname }}</td>
+        <td>{{ data.Tuan01 }}</td>
+        <td>{{ data.tuan03 }}</td>
+        <td>{{ data.tuan054 }}</td>
+        <td>{{ data.tuan06 }}</td>
         <td>{{ data.age }}</td>
         <td>{{ data.address }}</td>
       </tr>

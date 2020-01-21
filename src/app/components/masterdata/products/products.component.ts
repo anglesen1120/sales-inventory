@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UploadFile, NzMessageService } from 'ng-zorro-antd';
 import { HttpClient } from '@angular/common/http';
 import * as XLSX from "xlsx";
+import { read } from 'fs';
 
 
 interface ItemData {
@@ -17,51 +18,46 @@ interface ItemData {
 })
 export class ProductsComponent implements OnInit {
   uploading = false;
-  fileList: UploadFile[] = [];
+  fileList: Array<string>=[];
   listOfData: ItemData[] = [];
-  file: UploadFile;
+  fileupload: UploadFile;
   arrayBuffer: any;
   datastring : any;
+  storeData: any;  
+  jsonData: any; 
+  worksheet: any;
+  fileUploaded: File; 
 
   constructor(private http: HttpClient, private messenger: NzMessageService) { }
 
-  beforUpload = (files): boolean => {
-    let url = files.name;
-    let oReq = new XMLHttpRequest();
-    oReq.open("GET",url, true);
-    oReq.responseType = "arraybuffer";
-
-    oReq.onload = function(e){
-      var arraybuffer = oReq.response;
-
-      var data = new Uint8Array(arraybuffer);
-      var arr = new Array();
-      for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-      var bstr = arr.join("");
+  beforUpload(event) {
+    this.fileList = event.target.files;
+    const fileUploaded = event.target.files[0];
 
 
-      var workbook = XLSX.read(bstr, {type:"binary"});
-      /* DO SOMETHING WITH workbook HERE */
-      var first_sheet_name = workbook.SheetNames[0];
-      /* Get worksheet */
-      var worksheet = workbook.Sheets[first_sheet_name];
-      console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+
+    console.log("test import");
+    let workBook = null; 
+    let jsonData = null;
+    const reader = new FileReader();
+    // File excel is this.fileUploaded
+    reader.onload = (event) =>{
+      const data = reader.result;
+      console.log("data", data);
+      workBook = XLSX.read(data, {type:"binary"});
+      console.log("event", event);
+      jsonData = workBook.SheetNames.reduce((initial, name) => {
+        const sheet = workBook.Sheets[name];
+        initial[name] = XLSX.utils.sheet_to_json(sheet);
+        return initial;
+      }, {});
+      //const dataString = JSON.stringify(jsonData);
+      console.log("datastring", jsonData.Sheet1);
+      this.listOfData = jsonData.Sheet1
     }
-    this.fileList = this.fileList.concat(files);
-    if (this.fileList.length > 1) {
-      this.messenger.info("Chỉ có thể chọn một file để import");
-
-
-    } else {
-
-
-
-    }
-
-
-    console.log("filename", files);
-    console.log("file-list", this.fileList);
-    return false;
+    reader.readAsBinaryString(fileUploaded);
+    
+    
   }
 
   handleUpload() {
@@ -69,55 +65,46 @@ export class ProductsComponent implements OnInit {
     let b = 2;
     let c = a + b;
     console.log("datatest button", c);
-    const reader = new FileReader();
-    var url = this.fileList[0].name;
-    let jsonData = null;
-    let oReq = new XMLHttpRequest();
-    oReq.open("GET",url, true);
-    oReq.responseType = "arraybuffer";
-
-    oReq.onload = function(e){
-      var arraybuffer = oReq.response;
-
-      var data = new Uint8Array(arraybuffer);
-      var arr = new Array();
-      for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-      var bstr = arr.join("");
-
-
-      var workbook = XLSX.read(bstr, {type:"binary"});
-      console.log("work book", workbook);
-      /* DO SOMETHING WITH workbook HERE */
-      var first_sheet_name = workbook.SheetNames[0];
-      /* Get worksheet */
-      var worksheet = workbook.Sheets[first_sheet_name];
-      //console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-      // oReq.send();
-      jsonData = XLSX.utils.sheet_to_json(worksheet);
-      console.log("Jsondata", jsonData);
-      //reader.readAsBinaryString(this.fileList);
-
-    }
-
     
-
     
-
-
-
+    
+    
   }
 
-  handleChange(evt) {
-    let workBook = null;
+  readExcell (){
+    // let readFile = new FileReader();
+    // readFile.onload = (e) =>{
+    //   this.storeData = readFile.result;
+    //   console.log("test data import", this.storeData);
+    //   var data = new Uint8Array(this.storeData);
+    //   var arr = new Array();
+    //   // for (var i=0; i =data.length; i++)
+    //   // arr[i] = String.fromCharCode(data[i]);
+    //   var bstr = arr.join("");
+    //   var workbook = XLSX.read(bstr, {type:"binary"});
+    //   var first_sheet_name = workbook.SheetNames[0];
+    //   this.worksheet = workbook.SheetNames[first_sheet_name];
+    // }
+    // readFile.readAsArrayBuffer(this.fileUploaded);
+    console.log("test import");
+    let workBook = null; 
     let jsonData = null;
     const reader = new FileReader();
-    // const file = ev.target.files[0];
-    reader.onload = (event) => {
-      console.log("event", event);
+    // File excel is this.fileUploaded
+    reader.onload = (event) =>{
       const data = reader.result;
       console.log("data", data);
-     
+      workBook = XLSX.read(data, {type:"binary"});
+      console.log("event", event);
+
     }
+  }
+
+  handleChange(event) {
+    
+    
+    //this.readExcell();
+    console.log("test change", event);
   }
 
   ngOnInit() {
