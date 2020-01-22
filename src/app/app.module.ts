@@ -18,18 +18,19 @@ import { TransferHttp } from './modules/transfer-http/transfer-http';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent,FooterComponent
+    AppComponent, FooterComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
- 	  AngularFirestoreModule,
-    
+    AngularFirestoreModule, AngularFireDatabaseModule,
+
     BrowserModule,
     AppRoutingModule,
     AntProviderModule,

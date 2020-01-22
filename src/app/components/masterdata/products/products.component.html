@@ -16,7 +16,7 @@
       <input type="file" value="Chọn File" (change)="beforUpload($event)">
     </div>
     <div nz-col nzSpan="3">
-      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="readExcell()"
+      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleChange()"
         [disabled]="fileList.length ==0">
         {{ uploading ? 'Uploading' : 'Start Upload' }}
       </button>
@@ -36,6 +36,7 @@
   <nz-table #headerTable [nzData]="listOfData" [nzPageSize]="50" [nzScroll]="{ y: '500px' }">
     <thead>
       <tr>
+        <th></th>
         <th>STT</th>
         <th>Mã Sản Phẩm</th>
         <th>Tên Sản Phẩm</th>
@@ -48,16 +49,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of headerTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.ProduuctID }}</td>
-        <td>{{ data.Productname }}</td>
-        <td>{{ data.Tuan01 }}</td>
-        <td>{{ data.tuan03 }}</td>
-        <td>{{ data.tuan054 }}</td>
-        <td>{{ data.tuan06 }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
+      <tr *ngFor="let data of headerTable.data,index as i">
+        <td>{{ i +1 }}</td>
+        <td>{{ data.ProductID }}</td>
+        <td>{{ data.ProductName }}</td>
+        <td>{{ data.ProductUnit }}</td>
+        <td>{{ data.Buy_Prduct_Price }}</td>
+        <td>{{ data.Sales_Product_Price }}</td>
+        <td>{{ data.Product_Size }}</td>
+        <td>{{ data.VAT }}</td>
+        <td>{{ data.Promotion }}</td>
       </tr>
     </tbody>
   </nz-table>

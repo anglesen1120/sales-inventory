@@ -3,6 +3,8 @@ import { UploadFile, NzMessageService } from 'ng-zorro-antd';
 import { HttpClient } from '@angular/common/http';
 import * as XLSX from "xlsx";
 import { read } from 'fs';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/product.model';
 
 
 interface ItemData {
@@ -19,7 +21,7 @@ interface ItemData {
 export class ProductsComponent implements OnInit {
   uploading = false;
   fileList: Array<string>=[];
-  listOfData: ItemData[] = [];
+  listOfData: Product[];
   fileupload: UploadFile;
   arrayBuffer: any;
   datastring : any;
@@ -28,9 +30,10 @@ export class ProductsComponent implements OnInit {
   worksheet: any;
   fileUploaded: File; 
 
-  constructor(private http: HttpClient, private messenger: NzMessageService) { }
+  constructor(private http: HttpClient, private messenger: NzMessageService, private productServices : ProductService) { }
 
   beforUpload(event) {
+    // this.clearDataArray(this.listOfData);
     this.fileList = event.target.files;
     const fileUploaded = event.target.files[0];
 
@@ -61,15 +64,24 @@ export class ProductsComponent implements OnInit {
   }
 
   handleUpload() {
-    let a = 1;
-    let b = 2;
-    let c = a + b;
-    console.log("datatest button", c);
-    
+    // let a = 1;
+    // let b = 2;
+    // let c = a + b;
+    // console.log("datatest button", this.listOfData);
+    // let prodcutItemData : Product;
+    // prodcutItemData = Object.assign({},this.listOfData)
+    // console.log("convert to objec", prodcutItemData);
+    // this.productServices.createProduct(prodcutItemData).then(data =>{
+    //   console.log("data insert", data);
+    //})
     
     
     
   }
+
+  // clearDataArray(listData){
+  //   listData.splice(0, listData.length);
+  // }
 
   readExcell (){
     // let readFile = new FileReader();
@@ -100,21 +112,26 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  handleChange(event) {
+  handleChange() {
+    let product : Product [];
+   this.productServices.getImformationProduct().subscribe(data =>{
+     console.log("dataproduct", data);
+     product = this.listOfData = data.map(item =>{
+       return {
+         ProductID : item.payload.doc.id,
+         ...item.payload.doc.data(),
+       } as Product
+     });
+
+     console.log("peodut test", product);
+     
+   });
     
     
-    //this.readExcell();
-    console.log("test change", event);
   }
 
   ngOnInit() {
-    for (let i = 0; i < 100; i++) {
-      this.listOfData.push({
-        name: `Edward King ${i}`,
-        age: 32,
-        address: `London, Park Lane no. ${i}`
-      });
-    }
+    
   }
 
 
