@@ -16,17 +16,17 @@
       <input type="file" value="Chọn File" (change)="beforUpload($event)">
     </div>
     <div nz-col nzSpan="3">
-      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleChange()"
+      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="insertProduct()"
         [disabled]="fileList.length ==0">
         {{ uploading ? 'Uploading' : 'Start Upload' }}
       </button>
     </div>
 
-    <div nz-col nzSpan="3">
-      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="handleUpload()">
+    <!-- <div nz-col nzSpan="3">
+      <button nz-button [nzType]="'primary'" [nzLoading]="uploading" (click)="insertProduct()">
         Thêm Sản Phẩm
       </button>
-    </div>
+    </div> -->
   </div>
   <nz-divider></nz-divider>
 </div>

@@ -5,6 +5,7 @@ import * as XLSX from "xlsx";
 import { read } from 'fs';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
+import { Router } from '@angular/router';
 
 
 interface ItemData {
@@ -20,17 +21,17 @@ interface ItemData {
 })
 export class ProductsComponent implements OnInit {
   uploading = false;
-  fileList: Array<string>=[];
+  fileList: Array<string> = [];
   listOfData: Product[];
   fileupload: UploadFile;
   arrayBuffer: any;
-  datastring : any;
-  storeData: any;  
-  jsonData: any; 
+  datastring: any;
+  storeData: any;
+  jsonData: any;
   worksheet: any;
-  fileUploaded: File; 
+  fileUploaded: File;
 
-  constructor(private http: HttpClient, private messenger: NzMessageService, private productServices : ProductService) { }
+  constructor(private http: HttpClient, private messenger: NzMessageService, private productServices: ProductService, private router : Router) { }
 
   beforUpload(event) {
     // this.clearDataArray(this.listOfData);
@@ -40,14 +41,14 @@ export class ProductsComponent implements OnInit {
 
 
     console.log("test import");
-    let workBook = null; 
+    let workBook = null;
     let jsonData = null;
     const reader = new FileReader();
     // File excel is this.fileUploaded
-    reader.onload = (event) =>{
+    reader.onload = (event) => {
       const data = reader.result;
       console.log("data", data);
-      workBook = XLSX.read(data, {type:"binary"});
+      workBook = XLSX.read(data, { type: "binary" });
       console.log("event", event);
       jsonData = workBook.SheetNames.reduce((initial, name) => {
         const sheet = workBook.Sheets[name];
@@ -59,31 +60,44 @@ export class ProductsComponent implements OnInit {
       this.listOfData = jsonData.Sheet1
     }
     reader.readAsBinaryString(fileUploaded);
-    
-    
+
+
   }
 
-  handleUpload() {
-    // let a = 1;
-    // let b = 2;
-    // let c = a + b;
-    // console.log("datatest button", this.listOfData);
-    // let prodcutItemData : Product;
-    // prodcutItemData = Object.assign({},this.listOfData)
-    // console.log("convert to objec", prodcutItemData);
-    // this.productServices.createProduct(prodcutItemData).then(data =>{
-    //   console.log("data insert", data);
-    //})
+  clearArray<T>(array: T[]) {
+    while (array.length) {
+      array.pop();
+    }
+  }
+
+  insertProduct() {
+
+    let prodcutItemData: Product[];
+    prodcutItemData = Object.assign({}, this.listOfData)
     
+    for (let item in prodcutItemData) {
+      console.log("dang insert",item);
+      this.productServices.createProduct(prodcutItemData[item]).subscribe(data =>{
+        console.log("data", data);
+      });
+      
+    }
+    console.log("finish insert");
+    this.router.navigate(['/custommers']);
     
-    
+
+
+
+
+
+
   }
 
   // clearDataArray(listData){
   //   listData.splice(0, listData.length);
   // }
 
-  readExcell (){
+  readExcell() {
     // let readFile = new FileReader();
     // readFile.onload = (e) =>{
     //   this.storeData = readFile.result;
@@ -99,39 +113,39 @@ export class ProductsComponent implements OnInit {
     // }
     // readFile.readAsArrayBuffer(this.fileUploaded);
     console.log("test import");
-    let workBook = null; 
+    let workBook = null;
     let jsonData = null;
     const reader = new FileReader();
     // File excel is this.fileUploaded
-    reader.onload = (event) =>{
+    reader.onload = (event) => {
       const data = reader.result;
       console.log("data", data);
-      workBook = XLSX.read(data, {type:"binary"});
+      workBook = XLSX.read(data, { type: "binary" });
       console.log("event", event);
 
     }
   }
 
-  handleChange() {
-    let product : Product [];
-   this.productServices.getImformationProduct().subscribe(data =>{
-     console.log("dataproduct", data);
-     product = this.listOfData = data.map(item =>{
-       return {
-         ProductID : item.payload.doc.id,
-         ...item.payload.doc.data(),
-       } as Product
-     });
+  // handleChange() {
+  //   let product : Product [];
+  //  this.productServices.getImformationProduct().subscribe(data =>{
+  //    console.log("dataproduct", data);
+  //    product = this.listOfData = data.map(item =>{
+  //      return {
+  //        ProductID : item.payload.doc.id,
+  //        ...item.payload.doc.data(),
+  //      } as Product
+  //    });
 
-     console.log("peodut test", product);
-     
-   });
-    
-    
-  }
+  //    console.log("peodut test", product);
+
+  //  });
+
+
+  // }
 
   ngOnInit() {
-    
+
   }
 
 
